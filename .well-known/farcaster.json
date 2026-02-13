@@ -1,8 +1,8 @@
 {
   "accountAssociation": {
-    "header": "[FARCASTER'DAN ALINACAK]",
-    "payload": "[FARCASTER'DAN ALINACAK]",
-    "signature": "[FARCASTER'DAN ALINACAK]"
+    "header": "eyJmaWQiOjM3NzQxNiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDFENDliNjI0OUU5MzFhNWVkN0MxNDcwOTNjYjdEODMxYkVmNzYyZkEifQ",
+    "payload": "eyJkb21haW4iOiJmbGFwcHktYmlyZC10aHJlZS1ydXN0LnZlcmNlbC5hcHAifQ",
+    "signature": "1jLQr4MlGxrNUCfpiCaLP6Z0w+kCyPfGWPWifdyqW0VWp65XdE1++AlMxWNGE7CEfVUOJaz4mPFqM9zu4NXS1Bs="
   },
   "frame": {
     "version": "1",
@@ -19,7 +19,7 @@
     "tagline": "Tap to fly, dodge pipes!",
     "heroImageUrl": "https://flappy-bird-three-rust.vercel.app/preview.png",
     "screenshotUrls": ["https://flappy-bird-three-rust.vercel.app/preview.png"],
-    "ogTitle": "Flappy Bird - Farcaster Mini App",
+    "ogTitle": "Flappy Bird",
     "ogDescription": "Play Flappy Bird right inside Farcaster! Tap to fly and dodge the pipes.",
     "ogImageUrl": "https://flappy-bird-three-rust.vercel.app/preview.png"
   }
