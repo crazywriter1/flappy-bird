@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon & Preview Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a2e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      gap: 20px;
+    }
+    h1 { color: #4EC0CA; }
+    canvas {
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+    .label { font-size: 14px; color: #aaa; margin-top: 10px; }
+    a {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 24px;
+      background: #E84545;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    a:hover { background: #c73636; }
+  </style>
+</head>
+<body>
+  <h1>Flappy Bird - Asset Generator</h1>
+
+  <div class="label">icon.png (200x200)</div>
+  <canvas id="iconCanvas" width="200" height="200"></canvas>
+  <a id="downloadIcon" download="icon.png">Download icon.png</a>
+
+  <div class="label">preview.png (600x400)</div>
+  <canvas id="previewCanvas" width="600" height="400"></canvas>
+  <a id="downloadPreview" download="preview.png">Download preview.png</a>
+
+  <script>
+    // === ICON 200x200 ===
+    (function() {
+      const c = document.getElementById('iconCanvas');
+      const ctx = c.getContext('2d');
+      const W = 200, H = 200;
+
+      // Arka plan
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, '#4EC0CA');
+      grad.addColorStop(1, '#71C8D4');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Zemin
+      ctx.fillStyle = '#DED895';
+      ctx.fillRect(0, 160, W, 40);
+      ctx.fillStyle = '#A8C256';
+      for (let x = 0; x < W; x += 16) {
+        ctx.beginPath();
+        ctx.moveTo(x, 160);
+        ctx.lineTo(x + 8, 152);
+        ctx.lineTo(x + 16, 160);
+        ctx.fill();
+      }
+
+      // Boru sol
+      ctx.fillStyle = '#73BF2E';
+      ctx.fillRect(20, 0, 36, 80);
+      ctx.fillRect(20, 120, 36, 42);
+      ctx.fillStyle = '#8AD841';
+      ctx.fillRect(14, 74, 48, 18);
+      ctx.fillRect(14, 120, 48, 18);
+
+      // Boru sağ
+      ctx.fillStyle = '#73BF2E';
+      ctx.fillRect(144, 0, 36, 55);
+      ctx.fillRect(144, 100, 36, 62);
+      ctx.fillStyle = '#8AD841';
+      ctx.fillRect(138, 49, 48, 18);
+      ctx.fillRect(138, 100, 48, 18);
+
+      // Kuş
+      const bx = 100, by = 85;
+      ctx.fillStyle = '#F5C842';
+      ctx.beginPath();
+      ctx.ellipse(bx, by, 22, 16, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Kanat
+      ctx.fillStyle = '#E8A028';
+      ctx.beginPath();
+      ctx.ellipse(bx - 4, by - 6, 10, 6, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Göz
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(bx + 10, by - 5, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.arc(bx + 12, by - 4, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Gaga
+      ctx.fillStyle = '#E84545';
+      ctx.beginPath();
+      ctx.moveTo(bx + 18, by);
+      ctx.lineTo(bx + 28, by + 4);
+      ctx.lineTo(bx + 18, by + 8);
+      ctx.closePath();
+      ctx.fill();
+
+      document.getElementById('downloadIcon').href = c.toDataURL('image/png');
+    })();
+
+    // === PREVIEW 600x400 ===
+    (function() {
+      const c = document.getElementById('previewCanvas');
+      const ctx = c.getContext('2d');
+      const W = 600, H = 400;
+
+      // Gökyüzü
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, '#4EC0CA');
+      grad.addColorStop(1, '#71C8D4');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Bulutlar
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.ellipse(100, 80, 60, 18, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(350, 60, 50, 15, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(500, 100, 45, 14, 0, 0, Math.PI * 2); ctx.fill();
+
+      // Zemin
+      ctx.fillStyle = '#DED895';
+      ctx.fillRect(0, 330, W, 70);
+      ctx.fillStyle = '#A8C256';
+      for (let x = 0; x < W; x += 20) {
+        ctx.beginPath();
+        ctx.moveTo(x, 330);
+        ctx.lineTo(x + 10, 320);
+        ctx.lineTo(x + 20, 330);
+        ctx.fill();
+      }
+
+      // Borular
+      function drawPipe(x, topH, gap) {
+        const pw = 52;
+        ctx.fillStyle = '#73BF2E';
+        ctx.fillRect(x, 0, pw, topH);
+        ctx.fillRect(x, topH + gap, pw, 330 - topH - gap);
+        ctx.fillStyle = '#8AD841';
+        ctx.fillRect(x - 6, topH - 16, pw + 12, 16);
+        ctx.fillRect(x - 6, topH + gap, pw + 12, 16);
+      }
+      drawPipe(120, 110, 120);
+      drawPipe(300, 160, 120);
+      drawPipe(480, 90, 120);
+
+      // Kuş
+      const bx = 220, by = 180;
+      ctx.fillStyle = '#F5C842';
+      ctx.beginPath();
+      ctx.ellipse(bx, by, 26, 18, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#E8A028';
+      ctx.beginPath();
+      ctx.ellipse(bx - 5, by - 8, 12, 7, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(bx + 12, by - 6, 7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.arc(bx + 14, by - 5, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#E84545';
+      ctx.beginPath();
+      ctx.moveTo(bx + 22, by);
+      ctx.lineTo(bx + 34, by + 5);
+      ctx.lineTo(bx + 22, by + 10);
+      ctx.closePath();
+      ctx.fill();
+
+      // Başlık
+      ctx.font = 'bold 48px Arial Black, Arial';
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#543847';
+      ctx.lineWidth = 5;
+      ctx.textAlign = 'center';
+      ctx.strokeText('Flappy Bird', W / 2, H / 2 + 100);
+      ctx.fillText('Flappy Bird', W / 2, H / 2 + 100);
+
+      ctx.font = 'bold 20px Arial';
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 3;
+      ctx.strokeText('Farcaster Mini App', W / 2, H / 2 + 130);
+      ctx.fillText('Farcaster Mini App', W / 2, H / 2 + 130);
+
+      document.getElementById('downloadPreview').href = c.toDataURL('image/png');
+    })();
+  </script>
+</body>
+</html>

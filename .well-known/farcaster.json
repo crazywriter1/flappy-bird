@@ -1,0 +1,26 @@
+{
+  "accountAssociation": {
+    "header": "[FARCASTER'DAN ALINACAK]",
+    "payload": "[FARCASTER'DAN ALINACAK]",
+    "signature": "[FARCASTER'DAN ALINACAK]"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Flappy Bird",
+    "subtitle": "Tap to fly, dodge pipes!",
+    "description": "A simple Flappy Bird game built as a Farcaster Mini App. Tap to make the bird fly, avoid pipes, and try to beat your high score!",
+    "iconUrl": "https://[DOMAIN]/icon.png",
+    "homeUrl": "https://[DOMAIN]",
+    "imageUrl": "https://[DOMAIN]/preview.png",
+    "splashImageUrl": "https://[DOMAIN]/icon.png",
+    "splashBackgroundColor": "#4EC0CA",
+    "primaryCategory": "games",
+    "tags": ["game", "arcade", "farcaster"],
+    "tagline": "Tap to fly, dodge pipes!",
+    "heroImageUrl": "https://[DOMAIN]/preview.png",
+    "screenshotUrls": ["https://[DOMAIN]/preview.png"],
+    "ogTitle": "Flappy Bird - Farcaster Mini App",
+    "ogDescription": "Play Flappy Bird right inside Farcaster! Tap to fly and dodge the pipes.",
+    "ogImageUrl": "https://[DOMAIN]/preview.png"
+  }
+}
